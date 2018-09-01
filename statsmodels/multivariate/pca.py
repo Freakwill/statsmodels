@@ -400,8 +400,8 @@ class PCA(object):
             return np.empty(adj_data.shape[1]).fill(np.nan)
 
         self._mu = np.nanmean(adj_data, axis=0)
-        self._sigma = np.sqrt(np.nanmean((adj_data - self._mu) ** 2.0, axis=0))
-        if self._standardize:
+        if self._standardize:    
+            self._sigma = np.sqrt(np.nanmean((adj_data - self._mu) ** 2.0, axis=0))
             data = (adj_data - self._mu) / self._sigma
         elif self._demean:
             data = (adj_data - self._mu)
